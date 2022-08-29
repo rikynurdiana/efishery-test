@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.3](https://github.com/rikynurdiana/efishery-test/compare/v0.1.2...v0.1.3) (2022-08-29)
+
+
+### Features
+
+* product price page list data ([fa89087](https://github.com/rikynurdiana/efishery-test/commit/fa89087f51c26e4dd4869cd7408bc0885d3cf534))
+
 ### [0.1.2](https://github.com/rikynurdiana/efishery-test/compare/v0.1.1...v0.1.2) (2022-08-29)
 
 

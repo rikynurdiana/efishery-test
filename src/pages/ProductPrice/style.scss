@@ -1,0 +1,29 @@
+.product-price {
+	.title-icon {
+		margin-right: 10px;
+	}
+
+	.btn-wrapper {
+		position: relative;
+		display: flex;
+
+		.btn-add,
+		.btn-filter {
+			margin-bottom: 18px;
+			margin-right: 18px;
+		}
+	}
+
+	.filter-wrapper {
+		margin-bottom: 18px;
+		width: 100%;
+
+		.row-filter {
+			margin-bottom: 18px;
+		}
+	}
+
+	.btn-apply-filter {
+		margin-top: 0px;
+	}
+}

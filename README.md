@@ -2,6 +2,8 @@
 
 ## Project Overview
 
+#### [PREVIEW APLIKASI](https://efishery-fe-test.vercel.app/)
+
 ![dashboard](https://raw.githubusercontent.com/rikynurdiana/efishery-test/master/src/assets/images/list.jpeg "dashboard")
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

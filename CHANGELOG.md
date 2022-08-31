@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.13](https://github.com/rikynurdiana/efishery-test/compare/v0.1.12...v0.1.13) (2022-08-31)
+
+
+### Features
+
+* add link preview on readme ([1a661c1](https://github.com/rikynurdiana/efishery-test/commit/1a661c1cb434f58e39f36cf61228b330a3c770b4))
+
 ### [0.1.12](https://github.com/rikynurdiana/efishery-test/compare/v0.1.11...v0.1.12) (2022-08-31)
 
 

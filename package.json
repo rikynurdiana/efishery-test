@@ -1,6 +1,6 @@
 {
 	"name": "efishery-test",
-	"version": "0.1.11",
+	"version": "0.1.12",
 	"private": true,
 	"dependencies": {
 		"@onefish/icons-react": "^0.2.0",

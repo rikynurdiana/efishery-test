@@ -12,7 +12,7 @@ import {
 	SidebarContent,
 } from "react-pro-sidebar";
 import { FaGithub } from "react-icons/fa";
-import { Perahu, Ikan } from "@onefish/icons-react";
+import { Ikan } from "@onefish/icons-react";
 
 import { onHandleSidebar, onHandleCollapsed } from "../redux/slice/globals";
 
@@ -53,14 +53,9 @@ const Aside = () => {
 
 			<SidebarContent>
 				<Menu iconShape="circle">
-					<MenuItem icon={<Perahu size={28} />}>
-						{" "}
-						<Link to="/">Dashboard</Link>
-					</MenuItem>
-
 					<MenuItem icon={<Ikan size={28} />}>
 						{" "}
-						<Link to="/product-price">Product Price</Link>
+						<Link to="/">Product Price</Link>
 					</MenuItem>
 				</Menu>
 			</SidebarContent>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Card from "react-bootstrap/Card";
@@ -55,14 +55,18 @@ const ProductPrice = () => {
 		dispatch(onShowModalEdit(true));
 	};
 
-	useEffect(() => {
-		return () => {
+	const firstUpdate = useRef(true);
+	useLayoutEffect(() => {
+		if (firstUpdate.current) {
 			dispatch(getData());
 			dispatch(getOptionSize());
 			dispatch(getOptionProvince());
 			dispatch(getOptionKomoditas());
-		};
-	}, [dispatch]);
+
+			firstUpdate.current = false;
+			return;
+		}
+	});
 
 	return (
 		<main className="product-price">

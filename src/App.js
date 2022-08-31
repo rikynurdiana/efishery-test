@@ -16,7 +16,7 @@ function App() {
 				<Aside />
 				<SidebarToggle />
 				<Routes>
-					<Route path="/" element={<ProductPrice />} />
+					<Route path="/" element={<ProductPrice />} exact />
 				</Routes>
 			</div>
 		</IntlProvider>

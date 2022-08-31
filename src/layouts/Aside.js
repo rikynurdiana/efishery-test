@@ -16,7 +16,7 @@ import { Ikan } from "@onefish/icons-react";
 
 import { onHandleSidebar, onHandleCollapsed } from "../redux/slice/globals";
 
-import sidebarBg from "../assets/bg2.jpg";
+import sidebarBg from "../assets/bg1.jpg";
 import logoEfishery from "../assets/logo-efishery.png";
 
 const Aside = () => {

@@ -5,7 +5,7 @@ import { IntlProvider } from "react-intl";
 import Aside from "./layouts/Aside";
 import Main from "./pages/Main";
 import ProductPrice from "./pages/ProductPrice/index";
-import ToogleSidebar from "./components/ToggleSidebar";
+import SidebarToggle from "./components/SidebarToggle";
 import messages from "./lang/messages";
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
 		<IntlProvider locale={locale} messages={messages[locale]}>
 			<div className="app">
 				<Aside />
-				<ToogleSidebar />
+				<SidebarToggle />
 				<Routes>
 					<Route path="/" element={<Main />} />
 					<Route path="/product-price" element={<ProductPrice />} />

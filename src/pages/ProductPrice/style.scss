@@ -5,12 +5,12 @@
 
 	.btn-wrapper {
 		position: relative;
-		display: flex;
 
 		.btn-add,
 		.btn-filter {
 			margin-bottom: 18px;
 			margin-right: 18px;
+			margin-top: 18px;
 		}
 	}
 
@@ -18,8 +18,14 @@
 		margin-bottom: 18px;
 		width: 100%;
 
-		.row-filter {
-			margin-bottom: 18px;
+		.btn-wrapper {
+			display: flex;
+
+			.btn-apply-filter,
+			.btn-reset-filter {
+				margin-bottom: 18px;
+				margin-right: 18px;
+			}
 		}
 	}
 

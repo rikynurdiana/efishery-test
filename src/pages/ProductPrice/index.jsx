@@ -1,78 +1,66 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Ikan } from "@onefish/icons-react";
-import Table from "../../components/Tables";
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import Collapse from "react-bootstrap/Collapse";
+import { confirmAlert } from "react-confirm-alert";
+import { Ikan } from "@onefish/icons-react";
 
-import { getData } from "../../redux/slice/productPrice";
-import CustomForm from "../../components/CustomForm";
-import { filterModel } from "./models";
+import TableSection from "../../components/Tables";
+import FormSection from "./FormSection";
+import FilterSection from "./FilterSection";
+import DetailSection from "./DetailSection";
+import ButtonSection from "./ButtonSection";
+
+import {
+	getData,
+	getOptionSize,
+	getOptionProvince,
+	onShowModalView,
+	setModalViewData,
+	getOptionKomoditas,
+	onShowModalEdit,
+	setModalEditData,
+	deleteData,
+} from "../../redux/slice/productPrice";
 
 import "./style.scss";
 
 const ProductPrice = () => {
 	const dispatch = useDispatch();
-	const [filterOpen, setFilterOpen] = useState(false);
-	const tableData = useSelector((state) => state.productPrice.listData);
-	const tableHeader = [
-		{
-			label: "Komoditas Ikan",
-			isSort: true,
-			value: "komoditas",
-			width: "70px",
-		},
-		{
-			label: "Provinsi",
-			isSort: true,
-			value: "area_provinsi",
-			width: "70px",
-		},
-		{
-			label: "Kota",
-			isSort: true,
-			value: "area_kota",
-			width: "60px",
-		},
-		{
-			label: "Ukuran",
-			isSort: true,
-			value: "size",
-			width: "30px",
-		},
-		{
-			label: "Harga",
-			isSort: true,
-			value: "price",
-			width: "40px",
-		},
-		{
-			label: "Aksi",
-			isSort: false,
-			value: "action",
-			width: "65px",
-		},
-	];
 
-	const tableAction = {
-		edit: true,
-		view: true,
-		delete: true,
+	const handleDelete = (params) => {
+		confirmAlert({
+			title: "Konfirmasi",
+			message: "Apakah anda yakin akan menghapus data ini?",
+			buttons: [
+				{
+					label: "Hapus",
+					onClick: () => dispatch(deleteData(params)),
+				},
+				{
+					label: "Batal",
+					onClick: () => {},
+				},
+			],
+		});
 	};
 
-	const handleDelete = (param) => {
-		console.log("param", param);
+	const handleView = (params) => {
+		dispatch(setModalViewData(params));
+		dispatch(onShowModalView(true));
 	};
 
-	const submit = (params) => {
-		console.log(params);
+	const handleEdit = (params) => {
+		dispatch(setModalEditData(params));
+		dispatch(onShowModalEdit(true));
 	};
 
 	useEffect(() => {
 		return () => {
 			dispatch(getData());
+			dispatch(getOptionSize());
+			dispatch(getOptionProvince());
+			dispatch(getOptionKomoditas());
 		};
 	}, [dispatch]);
 
@@ -92,37 +80,27 @@ const ProductPrice = () => {
 
 			<Card>
 				<Card.Body>
-					{/* BUTTON SECTION */}
-					<div className="btn-wrapper">
-						<div className="btn-add">
-							<Button variant="primary">Tambah Data</Button>
-						</div>
-						<div className="btn-filter">
-							<Button
-								variant="secondary"
-								onClick={() => setFilterOpen(!filterOpen)}
-							>
-								Filter Data
-							</Button>
-						</div>
-					</div>
-
-					{/* FILTER SECTION */}
-					<Collapse in={filterOpen} className="filter-wrapper">
-						<div id="form-filter">
-							<CustomForm model={filterModel} onSubmit={submit} />
-						</div>
-					</Collapse>
-
-					{/* TABLE SECTION */}
-					<Table
-						tableHeader={tableHeader}
-						tableData={tableData}
-						tableAction={tableAction}
+					<ButtonSection />
+					<FilterSection />
+					<TableSection
+						tableHeader={useSelector(
+							(state) => state.productPrice.tableHeader
+						)}
+						tableData={useSelector(
+							(state) => state.productPrice.filteredData
+						)}
+						tableAction={useSelector(
+							(state) => state.productPrice.tableAction
+						)}
 						handleDelete={handleDelete}
+						handleView={handleView}
+						handleEdit={handleEdit}
 					/>
 				</Card.Body>
 			</Card>
+
+			<FormSection />
+			<DetailSection />
 		</main>
 	);
 };

@@ -1,20 +1,18 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
 import isEmpty from "lodash/isEmpty";
-import Button from "react-bootstrap/esm/Button";
+import Dropdown from "react-bootstrap/Dropdown";
+import { Eye, NotePencil, Trash, ListBullets } from "@onefish/icons-react";
+import { numberToCurrency } from "../libs/helpers";
 
-const Tables = ({ tableHeader, tableData, tableAction, handleDelete }) => {
-	const handleClickEdit = (id) => {
-		console.log("edit button", id);
-	};
-	const handleClickView = (id) => {
-		console.log("view button", id);
-	};
-	const handleClickDelete = (id) => {
-		console.log("delete button", id);
-		handleDelete(id);
-	};
-
+const Tables = ({
+	tableHeader,
+	tableData,
+	tableAction,
+	handleDelete,
+	handleView,
+	handleEdit,
+}) => {
 	const header = tableHeader.map((item, index) => (
 		<th key={index} style={{ textAlign: "center", maxWidth: item.width }}>
 			{item.label}
@@ -25,48 +23,45 @@ const Tables = ({ tableHeader, tableData, tableAction, handleDelete }) => {
 		<tr key={index}>
 			{tableHeader.map((item, k) => (
 				<td key={k} style={{ maxWidth: item.width }}>
-					{val[item.value]}
+					{item.type === "currency"
+						? `Rp ${numberToCurrency(val[item.value])}`
+						: val[item.value]}
 					{item.value === "action" ? (
 						<div style={{ textAlign: "center" }}>
-							{tableAction.edit && (
-								<Button
-									variant="outline-success"
-									onClick={() => handleClickEdit(val.id)}
-									style={{
-										marginRight: "10px",
-										marginBottom: "10px",
-									}}
-									size="sm"
+							<Dropdown>
+								<Dropdown.Toggle
+									variant="outline-primary"
+									id="dropdown-basic"
 								>
-									Ubah
-								</Button>
-							)}
-							{tableAction.view && (
-								<Button
-									variant="outline-warning"
-									onClick={() => handleClickView(val.id)}
-									style={{
-										marginRight: "10px",
-										marginBottom: "10px",
-									}}
-									size="sm"
-								>
-									Detail
-								</Button>
-							)}
-							{tableAction.delete && (
-								<Button
-									variant="outline-danger"
-									onClick={() => handleClickDelete(val.id)}
-									style={{
-										marginRight: "10px",
-										marginBottom: "10px",
-									}}
-									size="sm"
-								>
-									Hapus
-								</Button>
-							)}
+									<ListBullets />
+								</Dropdown.Toggle>
+
+								<Dropdown.Menu>
+									{tableAction.edit && (
+										<Dropdown.Item
+											onClick={() => handleEdit(val)}
+										>
+											<NotePencil /> Ubah
+										</Dropdown.Item>
+									)}
+
+									{tableAction.view && (
+										<Dropdown.Item
+											onClick={() => handleView(val)}
+										>
+											<Eye /> Detail
+										</Dropdown.Item>
+									)}
+
+									{tableAction.delete && (
+										<Dropdown.Item
+											onClick={() => handleDelete(val)}
+										>
+											<Trash /> Hapus
+										</Dropdown.Item>
+									)}
+								</Dropdown.Menu>
+							</Dropdown>
 						</div>
 					) : null}
 				</td>
@@ -77,12 +72,14 @@ const Tables = ({ tableHeader, tableData, tableAction, handleDelete }) => {
 	return (
 		<>
 			{!isEmpty(tableData) ? (
-				<Table striped bordered hover>
-					<thead>
-						<tr>{header}</tr>
-					</thead>
-					<tbody>{data}</tbody>
-				</Table>
+				<div className="table-responsive">
+					<Table striped bordered hover style={{ minWidth: "800px" }}>
+						<thead>
+							<tr>{header}</tr>
+						</thead>
+						<tbody>{data}</tbody>
+					</Table>
+				</div>
 			) : (
 				<Table striped bordered hover>
 					<thead>

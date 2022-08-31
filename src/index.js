@@ -6,21 +6,30 @@ import { store } from "./redux/store";
 import { Provider } from "react-redux";
 
 import App from "./App";
+import Notification from "./components/Notification";
+import LoadingOverlay from "./components/LoadingOverlay";
 
-import "./index.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "react-confirm-alert/src/react-confirm-alert.css";
+import "./index.scss";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(
-	<React.StrictMode>
-		<Provider store={store}>
-			<BrowserRouter>
-				<App />
-			</BrowserRouter>
-		</Provider>
-	</React.StrictMode>
-);
+function Index() {
+	return (
+		<React.StrictMode>
+			<Provider store={store}>
+				<BrowserRouter>
+					<LoadingOverlay />
+					<Notification />
+					<App />
+				</BrowserRouter>
+			</Provider>
+		</React.StrictMode>
+	);
+}
+
+root.render(<Index />);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

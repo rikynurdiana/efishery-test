@@ -1,4 +1,7 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
 import { useIntl } from "react-intl";
 import {
 	ProSidebar,
@@ -10,22 +13,28 @@ import {
 } from "react-pro-sidebar";
 import { FaGithub } from "react-icons/fa";
 import { Perahu, Ikan } from "@onefish/icons-react";
+
+import { onHandleSidebar, onHandleCollapsed } from "../redux/slice/globals";
+
 import sidebarBg from "../assets/bg2.jpg";
-import { Link } from "react-router-dom";
 import logoEfishery from "../assets/logo-efishery.png";
 
-const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar }) => {
+const Aside = () => {
+	const dispatch = useDispatch();
 	const intl = useIntl();
+	const isCollapsed = useSelector((state) => state.globals.isCollapsed);
+	const isOpenSidebar = useSelector((state) => state.globals.isOpenSidebar);
 	return (
 		<ProSidebar
-			image={image ? sidebarBg : false}
-			rtl={rtl}
-			collapsed={collapsed}
-			toggled={toggled}
+			image={sidebarBg}
+			collapsed={isCollapsed}
+			toggled={isOpenSidebar}
 			breakPoint="md"
-			onToggle={handleToggleSidebar}
+			onToggle={() => dispatch(onHandleSidebar(!isOpenSidebar))}
 		>
-			<SidebarHeader>
+			<SidebarHeader
+				onClick={() => dispatch(onHandleCollapsed(!isCollapsed))}
+			>
 				<div
 					style={{
 						padding: "24px",

@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-![dashboard](https://raw.githubusercontent.com/rikynurdiana/efishery-test/master/src/assets/images/list-data.jpeg "dashboard")
+![dashboard](https://raw.githubusercontent.com/rikynurdiana/efishery-test/master/src/assets/images/list.jpeg "dashboard")
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

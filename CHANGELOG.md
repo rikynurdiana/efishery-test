@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/rikynurdiana/efishery-test/compare/v0.1.6...v0.1.7) (2022-08-31)
+
+
+### Features
+
+* change useEffec to useLayoutEffect ([6666e29](https://github.com/rikynurdiana/efishery-test/commit/6666e293877bddc4b3d9a67659f55a1724764889))
+
 ### [0.1.6](https://github.com/rikynurdiana/efishery-test/compare/v0.1.5...v0.1.6) (2022-08-31)
 
 

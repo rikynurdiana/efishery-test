@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/rikynurdiana/efishery-test/compare/v0.1.4...v0.1.5) (2022-08-31)
+
+
+### Features
+
+* change name toogleSidebar to SidebarToggle ([14d1bd6](https://github.com/rikynurdiana/efishery-test/commit/14d1bd64f1a4adc315078fef62c24bdad329bcda))
+
 ### [0.1.4](https://github.com/rikynurdiana/efishery-test/compare/v0.1.3...v0.1.4) (2022-08-31)
 
 

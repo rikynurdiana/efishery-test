@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8](https://github.com/rikynurdiana/efishery-test/compare/v0.1.7...v0.1.8) (2022-08-31)
+
+
+### Features
+
+* update background sidebar ([36e2387](https://github.com/rikynurdiana/efishery-test/commit/36e23877855133146dbaeb89d985192d608117f5))
+
 ### [0.1.7](https://github.com/rikynurdiana/efishery-test/compare/v0.1.6...v0.1.7) (2022-08-31)
 
 
